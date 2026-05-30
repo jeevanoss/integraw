@@ -1,0 +1,34 @@
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Icon: rounded square -->
+  <rect x="0" y="10" width="100" height="100" rx="22" fill="#185FA5"/>
+
+  <!-- Letter I — top cap -->
+  <rect x="18" y="26" width="32" height="10" rx="2" fill="white"/>
+  <!-- Letter I — vertical bar -->
+  <rect x="27" y="26" width="11" height="58" rx="2" fill="white"/>
+  <!-- Letter I — bottom cap -->
+  <rect x="18" y="74" width="32" height="10" rx="2" fill="white"/>
+
+  <!-- Letter W -->
+  <polyline points="46,30 56,82 66,56 76,82 86,30"
+    fill="none" stroke="white" stroke-width="7"
+    stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Wordmark -->
+  <text x="118" y="74"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="52"
+    font-weight="700"
+    fill="#185FA5"
+    letter-spacing="-1">integraw</text>
+
+  <!-- Tagline -->
+  <text x="120" y="96"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="13"
+    font-weight="400"
+    fill="#888780"
+    letter-spacing="2">E-COMMERCE · PRESTASHOP · WEB</text>
+
+</svg>

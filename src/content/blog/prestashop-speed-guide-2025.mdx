@@ -1,0 +1,60 @@
+---
+title: "How to speed up your PrestaShop store in 2025"
+description: "A practical guide to improving PrestaShop performance — from server config to image optimization and caching strategies that really work."
+pubDate: 2025-05-01
+author: "Integraw Team"
+tags: ["PrestaShop", "Performance", "SEO"]
+---
+
+A slow PrestaShop store kills conversions. Research consistently shows that every additional second of load time reduces conversions — and Google's Core Web Vitals now directly affect your search rankings.
+
+Here's a practical checklist we use for every PrestaShop project at Integraw.
+
+## 1. Enable and configure caching
+
+PrestaShop has built-in caching via Smarty and a full-page cache option. Go to **Advanced Parameters → Performance** and enable:
+
+- Smarty cache: `Recompile templates if the files have been updated`
+- Cache: enable and select **Memcached** or **Redis** over the default file system
+- CCC (Combine, Compress, Cache): enable for CSS and JavaScript
+
+## 2. Optimize your images
+
+Images are usually the biggest culprit. Use **WebP format** for all product images — PrestaShop 1.7.7+ supports this natively.
+
+```bash
+# Convert existing images with cwebp
+cwebp -q 80 product.jpg -o product.webp
+```
+
+Also set proper image dimensions in **Design → Image settings** and regenerate thumbnails.
+
+## 3. Use a quality hosting provider
+
+Shared hosting will always bottleneck a PrestaShop store. For serious stores, we recommend:
+
+- **Cloudways** (managed cloud, great for PrestaShop)
+- **Hostinger Business** (affordable, solid for small stores)
+- **OVHcloud** (European option with Indian CDN)
+
+A PHP 8.1+ server with OPcache enabled will give you a significant speed boost over PHP 7.x.
+
+## 4. Minify and combine assets
+
+Under **Advanced Parameters → Performance**, enable:
+
+- Compress inline JavaScript
+- Move JavaScript to the end
+- Minify HTML
+
+For advanced optimization, tools like **Autoptimize** or a custom Webpack build for your theme can cut asset size dramatically.
+
+## 5. Use a CDN
+
+A CDN (Content Delivery Network) serves your static assets (images, CSS, JS) from servers closer to your visitors. For Indian stores, **Cloudflare's free plan** is an excellent starting point — it also adds DDoS protection and SSL.
+
+---
+
+Implementing all five of these steps typically moves a PrestaShop store from a Lighthouse performance score in the 40s to the 80s or higher. 
+
+Need help optimising your store? [Get in touch with us](/contact).

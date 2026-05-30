@@ -1,0 +1,169 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const portfolio = await getCollection('portfolio', ({ data }) => data.featured);
+const posts     = await getCollection('blog',      ({ data }) => !data.draft);
+const latestPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 3);
+---
+
+<Base title="Home" description="Integraw — PrestaShop & WordPress e-commerce experts. Fast, SEO-ready online stores built in Kerala, India.">
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 text-white">
+    <div class="max-w-6xl mx-auto px-6 py-28 md:py-36">
+      <div class="max-w-2xl">
+        <span class="inline-block bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+          PrestaShop · WordPress · E-commerce
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+          We build online stores<br/>
+          <span class="text-teal-400">that actually sell.</span>
+        </h1>
+        <p class="text-brand-100 text-lg md:text-xl leading-relaxed mb-10 max-w-xl">
+          High-performance e-commerce development for growing businesses.
+          PrestaShop, WordPress & custom solutions — fast, secure, SEO-ready.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/contact"
+             class="bg-teal-600 hover:bg-teal-800 text-white font-semibold px-8 py-3.5 rounded-xl transition-colors text-center">
+            Get a free quote
+          </a>
+          <a href="/portfolio"
+             class="border border-white/30 hover:bg-white/10 text-white font-semibold px-8 py-3.5 rounded-xl transition-colors text-center">
+            View our work
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative grid -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none"
+         style="background-image: linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="max-w-6xl mx-auto px-6 py-20" id="services">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-3">What we do</h2>
+      <p class="text-gray-500 text-lg">End-to-end e-commerce solutions tailored to your business</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[
+        { icon: '🛒', title: 'PrestaShop Development', desc: 'Custom themes, modules, migrations and performance tuning for PrestaShop stores.' },
+        { icon: '📝', title: 'WordPress & WooCommerce', desc: 'Content-driven sites and WooCommerce stores built for speed and conversions.' },
+        { icon: '⚡', title: 'Performance & SEO', desc: 'Core Web Vitals optimization, technical SEO audits and structured data implementation.' },
+        { icon: '🔧', title: 'Custom Integrations', desc: 'Payment gateways, ERP/CRM integrations, shipping APIs and third-party services.' },
+        { icon: '🛡️', title: 'Maintenance & Support', desc: 'Monthly retainers for updates, security patches, backups and peace of mind.' },
+        { icon: '🚀', title: 'Store Migrations', desc: 'Migrate from Magento, Shopify, OpenCart or any platform to PrestaShop or WooCommerce.' },
+      ].map(s => (
+        <div class="bg-white border border-gray-100 rounded-2xl p-7 hover:shadow-md hover:-translate-y-0.5 transition-all">
+          <div class="text-3xl mb-4">{s.icon}</div>
+          <h3 class="font-semibold text-brand-900 text-lg mb-2">{s.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PORTFOLIO TEASER -->
+  {portfolio.length > 0 && (
+    <section class="bg-gray-50 py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-end justify-between mb-12">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-2">Featured work</h2>
+            <p class="text-gray-500">Projects we're proud of</p>
+          </div>
+          <a href="/portfolio" class="text-brand-600 font-medium text-sm hover:underline hidden md:block">
+            View all →
+          </a>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {portfolio.map(p => (
+            <a href={`/portfolio/${p.slug}`}
+               class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
+              <div class="h-44 bg-brand-50 flex items-center justify-center">
+                <span class="text-5xl font-bold text-brand-200 group-hover:text-brand-400 transition-colors">
+                  {p.data.title.charAt(0)}
+                </span>
+              </div>
+              <div class="p-6">
+                <p class="text-xs text-teal-600 font-semibold uppercase tracking-wide mb-1">{p.data.client}</p>
+                <h3 class="font-semibold text-brand-900 mb-2">{p.data.title}</h3>
+                <p class="text-gray-500 text-sm leading-relaxed line-clamp-2">{p.data.description}</p>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {p.data.tech.slice(0,3).map(t => (
+                    <span class="bg-brand-50 text-brand-800 text-xs px-2.5 py-1 rounded-full font-medium">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-8 text-center md:hidden">
+          <a href="/portfolio" class="text-brand-600 font-medium text-sm hover:underline">View all projects →</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- LATEST BLOG -->
+  {latestPosts.length > 0 && (
+    <section class="max-w-6xl mx-auto px-6 py-20">
+      <div class="flex items-end justify-between mb-12">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-2">From the blog</h2>
+          <p class="text-gray-500">Tips, tutorials and e-commerce insights</p>
+        </div>
+        <a href="/blog" class="text-brand-600 font-medium text-sm hover:underline hidden md:block">
+          All posts →
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {latestPosts.map(post => (
+          <a href={`/blog/${post.slug}`}
+             class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md transition-all">
+            <div class="h-36 bg-brand-50 flex items-center justify-center">
+              <span class="text-4xl font-bold text-brand-200 group-hover:text-brand-400 transition-colors">
+                {post.data.title.charAt(0)}
+              </span>
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex gap-2 flex-wrap mb-3">
+                {post.data.tags.slice(0,2).map(tag => (
+                  <span class="bg-teal-50 text-teal-800 text-xs px-2 py-0.5 rounded-full">{tag}</span>
+                ))}
+              </div>
+              <h3 class="font-semibold text-brand-900 mb-2 line-clamp-2 group-hover:text-brand-600 transition-colors">{post.data.title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed line-clamp-3 flex-1">{post.data.description}</p>
+              <p class="text-xs text-gray-400 mt-4">
+                {post.data.pubDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- CTA BAND -->
+  <section class="bg-brand-600 text-white py-16 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to build your store?</h2>
+      <p class="text-brand-100 mb-8 text-lg">
+        Get a free consultation and quote within 24 hours.
+      </p>
+      <a href="/contact"
+         class="inline-block bg-white text-brand-600 font-bold px-10 py-4 rounded-xl hover:bg-brand-50 transition-colors">
+        Start a project
+      </a>
+    </div>
+  </section>
+
+</Base>

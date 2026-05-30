@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://integraw.in/sitemap-index.xml

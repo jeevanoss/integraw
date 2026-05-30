@@ -1,0 +1,309 @@
+---
+import Base from '../layouts/Base.astro';
+
+const services = [
+  {
+    icon: '🛒',
+    title: 'PrestaShop Development',
+    desc: 'Custom themes, modules, API integrations, and full-store builds on PrestaShop 8. We know the platform inside out.',
+    features: ['Custom theme design', 'Module development', 'Payment gateway setup', 'Performance tuning'],
+  },
+  {
+    icon: '📝',
+    title: 'WordPress & WooCommerce',
+    desc: 'Content-rich sites and WooCommerce stores built for speed, SEO, and conversions — not just looks.',
+    features: ['WooCommerce store setup', 'Custom theme / child theme', 'Plugin development', 'Gutenberg blocks'],
+  },
+  {
+    icon: '🚀',
+    title: 'Store Migrations',
+    desc: 'Move from Magento, Shopify, OpenCart, or any legacy platform to PrestaShop or WooCommerce with zero data loss.',
+    features: ['Products & categories', 'Customers & order history', 'SEO URL preservation', 'Post-migration QA'],
+  },
+  {
+    icon: '⚡',
+    title: 'Performance & SEO',
+    desc: 'Core Web Vitals, technical SEO audits, structured data, and image pipelines — measurable results, not guesswork.',
+    features: ['Core Web Vitals audit', 'Technical SEO fixes', 'Schema / structured data', 'CDN & caching setup'],
+  },
+  {
+    icon: '🔧',
+    title: 'Custom Integrations',
+    desc: 'Connect your store to payment gateways, ERPs, CRMs, shipping providers, and third-party APIs.',
+    features: ['Razorpay / PayU / Stripe', 'ERP & CRM sync', 'Shipping API setup', 'Webhook automation'],
+  },
+  {
+    icon: '🛡️',
+    title: 'Maintenance & Support',
+    desc: 'Monthly retainers so your store stays fast, secure, and up to date without you thinking about it.',
+    features: ['Security patches', 'Regular backups', 'Uptime monitoring', 'Priority bug fixes'],
+  },
+];
+
+const plans = [
+  {
+    name: 'Starter',
+    price: '₹49,999',
+    period: 'one-time',
+    showPeriod: true,
+    tagline: 'Get online fast',
+    showTagline: true,
+    highlight: false,
+    cardClass: 'relative flex flex-col rounded-2xl p-8 bg-white border border-gray-100',
+    labelClass: 'text-sm font-semibold uppercase tracking-wide mb-1 text-gray-400',
+    priceClass: 'text-4xl font-black text-brand-900',
+    periodClass: 'text-sm mb-1 text-gray-400',
+    checkClass: 'w-4 h-4 mt-0.5 flex-shrink-0 text-teal-600',
+    featureClass: 'text-gray-600',
+    ctaClass: 'block text-center font-semibold py-3 rounded-xl transition-colors bg-brand-600 text-white hover:bg-brand-800',
+    features: [
+      'PrestaShop or WooCommerce store',
+      'Up to 100 products',
+      'Mobile-responsive theme',
+      '1 payment gateway',
+      'Basic SEO setup',
+      '30-day post-launch support',
+    ],
+    cta: 'Get started',
+  },
+  {
+    name: 'Growth',
+    price: '₹1,49,999',
+    period: 'one-time',
+    showPeriod: true,
+    tagline: 'Most popular',
+    showTagline: false,
+    highlight: true,
+    cardClass: 'relative flex flex-col rounded-2xl p-8 bg-brand-600 text-white shadow-xl -translate-y-2',
+    labelClass: 'text-sm font-semibold uppercase tracking-wide mb-1 text-brand-100',
+    priceClass: 'text-4xl font-black text-white',
+    periodClass: 'text-sm mb-1 text-brand-200',
+    checkClass: 'w-4 h-4 mt-0.5 flex-shrink-0 text-teal-300',
+    featureClass: 'text-brand-100',
+    ctaClass: 'block text-center font-semibold py-3 rounded-xl transition-colors bg-white text-brand-600 hover:bg-brand-50',
+    features: [
+      'Everything in Starter',
+      'Unlimited products',
+      'Custom theme design',
+      'Up to 3 integrations',
+      'Full SEO + sitemap setup',
+      'Performance optimisation',
+      '90-day post-launch support',
+    ],
+    cta: 'Start your project',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: 'quote',
+    showPeriod: false,
+    tagline: 'Complex requirements',
+    showTagline: true,
+    highlight: false,
+    cardClass: 'relative flex flex-col rounded-2xl p-8 bg-white border border-gray-100',
+    labelClass: 'text-sm font-semibold uppercase tracking-wide mb-1 text-gray-400',
+    priceClass: 'text-4xl font-black text-brand-900',
+    periodClass: 'text-sm mb-1 text-gray-400',
+    checkClass: 'w-4 h-4 mt-0.5 flex-shrink-0 text-teal-600',
+    featureClass: 'text-gray-600',
+    ctaClass: 'block text-center font-semibold py-3 rounded-xl transition-colors bg-brand-600 text-white hover:bg-brand-800',
+    features: [
+      'Everything in Growth',
+      'Multi-store / multi-language',
+      'Custom modules & APIs',
+      'ERP / CRM integration',
+      'Dedicated project manager',
+      'SLA-backed support retainer',
+    ],
+    cta: 'Talk to us',
+  },
+];
+
+const retainers = [
+  { name: 'Basic', price: '₹7,999', period: '/mo', features: ['Security updates', 'Weekly backups', 'Uptime monitoring', '2 hrs bug fixes'] },
+  { name: 'Standard', price: '₹14,999', period: '/mo', features: ['Everything in Basic', 'Daily backups', '5 hrs dev time', 'Monthly report'] },
+  { name: 'Premium', price: '₹24,999', period: '/mo', features: ['Everything in Standard', 'Priority response', '12 hrs dev time', 'Quarterly audit'] },
+];
+
+const faqs = [
+  {
+    q: "How long does a typical project take?",
+    a: "Starter builds usually take 3–4 weeks. Growth projects are 6–10 weeks depending on complexity. We give you a firm timeline before any work begins.",
+  },
+  {
+    q: "Do you work with clients outside India?",
+    a: "Yes. We work with clients across India, the Middle East, and Europe. All communication is in English and we adjust working hours for international time zones.",
+  },
+  {
+    q: "What's included in post-launch support?",
+    a: "Bug fixes for issues directly related to our work are covered free for the support period in your plan. After that, a retainer or ad-hoc hourly rate applies.",
+  },
+  {
+    q: "Can I upgrade my plan mid-project?",
+    a: "Yes. If requirements grow after the project starts, we'll scope the changes, agree on a revised price, and adjust the timeline accordingly.",
+  },
+];
+---
+
+<Base title="Services" description="PrestaShop, WordPress, and WooCommerce development services with transparent pricing. E-commerce solutions by Integraw, Kerala.">
+
+  <!-- HERO -->
+  <section class="bg-gradient-to-br from-brand-900 via-brand-800 to-brand-600 text-white py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-2xl">
+        <span class="inline-block bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+          What we offer
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-5">
+          Services & pricing
+        </h1>
+        <p class="text-brand-100 text-lg leading-relaxed">
+          Transparent, fixed-scope pricing — no surprise invoices. Every engagement starts with a free consultation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-3">What we build</h2>
+      <p class="text-gray-500 text-lg">End-to-end e-commerce — from first commit to launch day and beyond</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map(s => (
+        <div class="bg-white border border-gray-100 rounded-2xl p-7 hover:shadow-md hover:-translate-y-0.5 transition-all">
+          <div class="text-3xl mb-4">{s.icon}</div>
+          <h3 class="font-semibold text-brand-900 text-lg mb-2">{s.title}</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-5">{s.desc}</p>
+          <ul class="space-y-1.5">
+            {s.features.map(f => (
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <svg width="16" height="16" class="flex-shrink-0 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-3">Project pricing</h2>
+        <p class="text-gray-500 text-lg">Fixed-price packages for new store builds</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 items-stretch">
+        {plans.map(plan => (
+          <div class={plan.cardClass}>
+            {plan.highlight && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-teal-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wide">
+                {plan.tagline}
+              </span>
+            )}
+
+            <div class="mb-6">
+              <p class={plan.labelClass}>{plan.name}</p>
+              {plan.showTagline && <p class="text-xs text-gray-400 mb-2">{plan.tagline}</p>}
+              <div class="flex items-end gap-1.5">
+                <span class={plan.priceClass}>{plan.price}</span>
+                {plan.showPeriod && <span class={plan.periodClass}>{plan.period}</span>}
+              </div>
+            </div>
+
+            <ul class="space-y-3 flex-1 mb-8">
+              {plan.features.map(f => (
+                <li class="flex items-start gap-2.5 text-sm">
+                  <svg width="16" height="16" class={plan.checkClass} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class={plan.featureClass}>{f}</span>
+                </li>
+              ))}
+            </ul>
+
+            <a href="/contact" class={plan.ctaClass}>{plan.cta} →</a>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm text-gray-400 mt-6">All prices exclude GST. Hosting not included. <a href="/contact" class="text-brand-600 hover:underline">Talk to us</a> if your needs don't fit a package.</p>
+    </div>
+  </section>
+
+  <!-- RETAINER PRICING -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-14">
+      <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-3">Monthly retainers</h2>
+      <p class="text-gray-500 text-lg">Ongoing support so your store never skips a beat</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {retainers.map(r => (
+        <div class="bg-white border border-gray-100 rounded-2xl p-7 hover:shadow-md transition-all">
+          <p class="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-1">{r.name}</p>
+          <div class="flex items-end gap-1 mb-6">
+            <span class="text-3xl font-black text-brand-900">{r.price}</span>
+            <span class="text-sm text-gray-400 mb-1">{r.period}</span>
+          </div>
+          <ul class="space-y-2.5">
+            {r.features.map(f => (
+              <li class="flex items-center gap-2 text-sm text-gray-600">
+                <svg width="16" height="16" class="flex-shrink-0 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact" class="mt-7 block text-center text-sm font-semibold text-brand-600 border border-brand-200 hover:bg-brand-50 py-2.5 rounded-xl transition-colors">
+            Get started →
+          </a>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-brand-900 mb-10 text-center">Common questions</h2>
+
+      <div class="space-y-4">
+        {faqs.map(item => (
+          <details class="group bg-white border border-gray-100 rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-medium text-brand-900 select-none list-none">
+              {item.q}
+              <svg width="20" height="20" class="flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="px-6 pb-5 text-sm text-gray-500 leading-relaxed">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-600 text-white py-16 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Not sure which plan fits?</h2>
+      <p class="text-brand-100 mb-8 text-lg">
+        Tell us about your project and we'll recommend the right approach — no strings attached.
+      </p>
+      <a href="/contact"
+         class="inline-block bg-white text-brand-600 font-bold px-10 py-4 rounded-xl hover:bg-brand-50 transition-colors">
+        Get a free quote
+      </a>
+    </div>
+  </section>
+
+</Base>

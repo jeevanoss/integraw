@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('portfolio');
+const sorted = projects.sort((a, b) => a.data.order - b.data.order);
+
+const allTech = [...new Set(sorted.flatMap(p => p.data.tech))].sort();
+---
+
+<Base title="Portfolio" description="E-commerce and WordPress projects built by Integraw — PrestaShop stores, custom themes, and high-performance sites.">
+
+  <section class="max-w-6xl mx-auto px-6 pt-14 pb-10">
+    <h1 class="text-4xl md:text-5xl font-bold text-brand-900 mb-3">Our work</h1>
+    <p class="text-gray-500 text-xl">Projects we've built for clients across India and beyond</p>
+  </section>
+
+  <!-- Stats -->
+  <section class="max-w-6xl mx-auto px-6 pb-12">
+    <div class="grid grid-cols-3 gap-4 max-w-lg">
+      {[
+        { value: '30+', label: 'Projects delivered' },
+        { value: '15+', label: 'Happy clients' },
+        { value: '5★',  label: 'Avg client rating' },
+      ].map(s => (
+        <div class="bg-brand-50 rounded-xl p-4 text-center">
+          <div class="text-2xl font-bold text-brand-600">{s.value}</div>
+          <div class="text-xs text-gray-500 mt-1">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    {sorted.length === 0 ? (
+      <div class="text-center py-20 text-gray-400">
+        <p class="text-2xl mb-2">Portfolio coming soon</p>
+        <p class="text-sm">We're preparing our case studies.</p>
+      </div>
+    ) : (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sorted.map(project => (
+          <a href={`/portfolio/${project.slug}`}
+             class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
+            <div class="h-48 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center relative">
+              <span class="text-6xl font-black text-brand-200 group-hover:text-brand-400 transition-colors">
+                {project.data.title.charAt(0)}
+              </span>
+              {project.data.featured && (
+                <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-2.5 py-1 rounded-full font-medium">
+                  Featured
+                </span>
+              )}
+            </div>
+            <div class="p-6 flex flex-col flex-1">
+              <p class="text-xs text-teal-600 font-semibold uppercase tracking-wide mb-1">{project.data.client}</p>
+              <h2 class="font-bold text-brand-900 text-lg mb-2 group-hover:text-brand-600 transition-colors">
+                {project.data.title}
+              </h2>
+              <p class="text-gray-500 text-sm leading-relaxed line-clamp-2 flex-1">
+                {project.data.description}
+              </p>
+              <div class="flex flex-wrap gap-2 mt-4">
+                {project.data.tech.slice(0, 3).map(t => (
+                  <span class="bg-brand-50 text-brand-800 text-xs px-2.5 py-1 rounded-full font-medium">{t}</span>
+                ))}
+                {project.data.tech.length > 3 && (
+                  <span class="bg-gray-100 text-gray-500 text-xs px-2.5 py-1 rounded-full">+{project.data.tech.length - 3}</span>
+                )}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-900 text-white py-16 text-center">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-4">Like what you see?</h2>
+      <p class="text-brand-100 mb-8">Let's build something great together.</p>
+      <a href="/contact"
+         class="inline-block bg-teal-600 hover:bg-teal-800 text-white font-bold px-10 py-4 rounded-xl transition-colors">
+        Start your project
+      </a>
+    </div>
+  </section>
+
+</Base>

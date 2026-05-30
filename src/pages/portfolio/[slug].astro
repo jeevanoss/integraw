@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('portfolio');
+  return projects.map(p => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Base title={project.data.title} description={project.data.description}>
+
+  <div class="max-w-4xl mx-auto px-6 pt-14 pb-24">
+
+    <a href="/portfolio" class="text-brand-600 font-medium text-sm hover:underline mb-8 inline-block">
+      ← All projects
+    </a>
+
+    <!-- Header -->
+    <div class="mb-10">
+      <p class="text-teal-600 font-semibold text-sm uppercase tracking-wide mb-2">{project.data.client}</p>
+      <h1 class="text-4xl md:text-5xl font-bold text-brand-900 mb-4">{project.data.title}</h1>
+      <p class="text-gray-500 text-xl leading-relaxed">{project.data.description}</p>
+    </div>
+
+    <!-- Hero image placeholder -->
+    <div class="h-64 md:h-80 bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl flex items-center justify-center mb-10">
+      <span class="text-8xl font-black text-brand-200">{project.data.title.charAt(0)}</span>
+    </div>
+
+    <!-- Meta -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12 p-6 bg-gray-50 rounded-2xl">
+      <div>
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Client</p>
+        <p class="font-semibold text-brand-900">{project.data.client}</p>
+      </div>
+      <div>
+        <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Tech stack</p>
+        <div class="flex flex-wrap gap-1.5">
+          {project.data.tech.map(t => (
+            <span class="bg-brand-100 text-brand-800 text-xs px-2 py-0.5 rounded font-medium">{t}</span>
+          ))}
+        </div>
+      </div>
+      {project.data.url && (
+        <div>
+          <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Live site</p>
+          <a href={project.data.url} target="_blank" rel="noopener"
+             class="text-brand-600 font-medium text-sm hover:underline">
+            Visit site →
+          </a>
+        </div>
+      )}
+    </div>
+
+    <!-- Content -->
+    <div class="prose prose-lg max-w-none
+                prose-headings:font-bold prose-headings:text-brand-900
+                prose-a:text-brand-600
+                prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+                prose-pre:bg-brand-900">
+      <Content />
+    </div>
+
+  </div>
+
+</Base>
