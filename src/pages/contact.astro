@@ -40,7 +40,7 @@ import Base from '../layouts/Base.astro';
     <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
       <h2 class="text-xl font-bold text-brand-900 mb-6">Send us a message</h2>
 
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-5">
+      <form id="contact-form" action="https://formspree.io/f/xzdnajjq" method="POST" class="space-y-5">
 
         <div class="grid grid-cols-2 gap-4">
           <div>
@@ -95,6 +95,43 @@ import Base from '../layouts/Base.astro';
 
         <p class="text-xs text-gray-400 text-center">We reply within 24 hours on business days.</p>
       </form>
+
+      <div id="form-success" class="hidden text-center py-8">
+        <div class="text-4xl mb-3">✅</div>
+        <p class="font-semibold text-brand-900 text-lg">Message sent!</p>
+        <p class="text-gray-500 text-sm mt-1">We'll get back to you within 24 hours.</p>
+      </div>
+
+      <div id="form-error" class="hidden text-center py-8">
+        <div class="text-4xl mb-3">❌</div>
+        <p class="font-semibold text-red-600 text-lg">Something went wrong.</p>
+        <p class="text-gray-500 text-sm mt-1">Please try emailing us directly at <a href="mailto:jeevanoss@gmail.com" class="text-brand-600 hover:underline">jeevanoss@gmail.com</a></p>
+      </div>
+
+      <script>
+        const form = document.getElementById('contact-form');
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = form.querySelector('button[type="submit"]');
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' },
+            });
+            if (res.ok) {
+              form.classList.add('hidden');
+              document.getElementById('form-success')?.classList.remove('hidden');
+            } else {
+              throw new Error('failed');
+            }
+          } catch {
+            if (btn) { btn.disabled = false; btn.textContent = 'Send message →'; }
+            document.getElementById('form-error')?.classList.remove('hidden');
+          }
+        });
+      </script>
     </div>
 
   </div>
