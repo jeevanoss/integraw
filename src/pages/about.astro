@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 const stats = [
   { value: '500+', label: 'Projects delivered' },
   { value: '220+', label: 'Happy clients' },
-  { value: '10+',  label: 'Years of experience' },
+  { value: '18+',  label: 'Years of experience' },
   { value: '15+',  label: 'Countries served' },
 ];
 
@@ -38,7 +38,7 @@ const countries = ['Poland', 'United Kingdom', 'France', 'Italy', 'Bulgaria', 'N
 
 <Base
   title="About"
-  description="Integraw is a Kerala-based e-commerce development agency specialising in PrestaShop and WordPress — 500+ projects delivered for clients across Europe and India."
+  description="Integraw is a Kerala-based e-commerce development agency with 18 years of PrestaShop expertise — 500+ projects delivered for clients across Europe and India since 2008."
 >
 
   <!-- HERO -->
@@ -46,14 +46,14 @@ const countries = ['Poland', 'United Kingdom', 'France', 'Italy', 'Bulgaria', 'N
     <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
       <div class="max-w-2xl">
         <span class="inline-block bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
-          Kerala, India · Est. 2014
+          Kerala, India · Since March 2008
         </span>
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
           We build stores.<br/>
           <span class="text-teal-400">Not just websites.</span>
         </h1>
         <p class="text-brand-100 text-lg md:text-xl leading-relaxed max-w-xl">
-          Integraw is a specialist e-commerce development agency with a decade of PrestaShop and WordPress experience — serving clients from Kerala to Europe.
+          Integraw is a specialist e-commerce development agency with 18 years of PrestaShop and WordPress experience — serving clients from Kerala to Europe.
         </p>
       </div>
     </div>
@@ -81,16 +81,16 @@ const countries = ['Poland', 'United Kingdom', 'France', 'Italy', 'Bulgaria', 'N
         <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6">Our story</h2>
         <div class="space-y-4 text-gray-600 leading-relaxed">
           <p>
-            Integraw was founded in Kerala with a single focus: build PrestaShop stores that work the way merchants need them to, not just the way the default install allows.
+            It started on March 5, 2008 — a freelancer from Kerala taking on PrestaShop projects through Freelancer.com. No office, no team, just a focus on doing the work well and shipping on time.
           </p>
           <p>
-            Over the past decade we have delivered more than 500 projects — from single-store setups for UK hobbyist retailers to multistore deployments for French pharmaceutical brands and large LED lighting catalogues in Poland. Our clients stay with us because we treat their business like our own.
+            Over 18 years that grew into 500+ projects across 15+ countries — from single-store setups for UK hobbyist retailers to multistore deployments for French pharmaceutical brands, large LED lighting catalogues in Poland, and B2B industrial platforms in India. Clients kept returning and referring others because the quality and honesty were consistent.
           </p>
           <p>
-            We are a small, focused team. That is deliberate. It means the person who scopes your project is the same person who writes your code and answers your messages — no account managers, no handoffs, no information lost in transit.
+            Integraw is still deliberately small. The person who scopes your project is the same person who writes your code and answers your messages — no account managers, no handoffs, no information lost in transit.
           </p>
           <p>
-            Based in Taliparamba, Kerala — available worldwide.
+            Based in Taliparamba, Kerala — working with clients worldwide.
           </p>
         </div>
       </div>
@@ -159,11 +159,25 @@ const countries = ['Poland', 'United Kingdom', 'France', 'Italy', 'Bulgaria', 'N
         <h2 class="text-3xl font-bold text-brand-900 mb-4">Jeevan</h2>
         <div class="space-y-3 text-gray-600 leading-relaxed">
           <p>
-            I have spent over a decade building e-commerce solutions on PrestaShop. What started as freelance module development grew into a full service agency as clients kept returning — and referring others.
+            I started freelancing on March 5, 2008 and have been building PrestaShop stores ever since. 18 years, 500+ projects, and a 4.8-star rating with 249 reviews on Freelancer.com — built entirely on repeat clients and word of mouth.
           </p>
           <p>
             I handle every project personally: architecture, development, and support. You always know who is working on your store.
           </p>
+        </div>
+        <!-- Freelancer stats -->
+        <div class="mt-6 grid grid-cols-2 gap-3 max-w-xs">
+          {[
+            { label: 'On time',    value: '91%' },
+            { label: 'On budget',  value: '95%' },
+            { label: 'Rating',     value: '4.8★' },
+            { label: 'Reviews',    value: '249' },
+          ].map(s => (
+            <div class="bg-brand-50 rounded-xl p-3 text-center">
+              <div class="font-bold text-brand-700 text-lg">{s.value}</div>
+              <div class="text-xs text-gray-500">{s.label}</div>
+            </div>
+          ))}
         </div>
         <div class="mt-6 flex gap-4">
           <a href="/contact"
