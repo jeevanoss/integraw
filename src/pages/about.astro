@@ -1,0 +1,208 @@
+---
+import Base from '../layouts/Base.astro';
+
+const stats = [
+  { value: '500+', label: 'Projects delivered' },
+  { value: '220+', label: 'Happy clients' },
+  { value: '10+',  label: 'Years of experience' },
+  { value: '15+',  label: 'Countries served' },
+];
+
+const values = [
+  {
+    title: 'We own outcomes',
+    body: "We don't hand over a zip file and disappear. We care about whether the store actually performs — in speed, in conversions, in long-term reliability.",
+  },
+  {
+    title: 'No bloat, no fluff',
+    body: "Every module, every line of code has a reason. We build lean, maintainable solutions — not over-engineered systems that become liabilities the moment we leave.",
+  },
+  {
+    title: 'Honest timelines',
+    body: "We tell you what's realistic. If a project needs three weeks, we say three weeks — not one, and then three with apologies.",
+  },
+  {
+    title: 'Global standard, local value',
+    body: "Operating from Kerala lets us offer European and UK-quality development at costs that make sense for growing businesses anywhere in the world.",
+  },
+];
+
+const tech = [
+  'PrestaShop 8', 'PrestaShop 1.7', 'WordPress', 'WooCommerce',
+  'PHP', 'MySQL', 'Smarty', 'Twig', 'JavaScript', 'REST APIs',
+  'Linux / Nginx', 'Git',
+];
+
+const countries = ['Poland', 'United Kingdom', 'France', 'Italy', 'Bulgaria', 'Netherlands', 'India', 'and more'];
+---
+
+<Base
+  title="About"
+  description="Integraw is a Kerala-based e-commerce development agency specialising in PrestaShop and WordPress — 500+ projects delivered for clients across Europe and India."
+>
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-brand-700 text-white">
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-2xl">
+        <span class="inline-block bg-teal-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+          Kerala, India · Est. 2014
+        </span>
+        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+          We build stores.<br/>
+          <span class="text-teal-400">Not just websites.</span>
+        </h1>
+        <p class="text-brand-100 text-lg md:text-xl leading-relaxed max-w-xl">
+          Integraw is a specialist e-commerce development agency with a decade of PrestaShop and WordPress experience — serving clients from Kerala to Europe.
+        </p>
+      </div>
+    </div>
+    <div class="absolute inset-0 opacity-5 pointer-events-none"
+         style="background-image: linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {stats.map(s => (
+        <div class="bg-brand-50 rounded-2xl p-6 text-center">
+          <div class="text-3xl md:text-4xl font-bold text-brand-600 mb-1">{s.value}</div>
+          <div class="text-sm text-gray-500">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6">Our story</h2>
+        <div class="space-y-4 text-gray-600 leading-relaxed">
+          <p>
+            Integraw was founded in Kerala with a single focus: build PrestaShop stores that work the way merchants need them to, not just the way the default install allows.
+          </p>
+          <p>
+            Over the past decade we have delivered more than 500 projects — from single-store setups for UK hobbyist retailers to multistore deployments for French pharmaceutical brands and large LED lighting catalogues in Poland. Our clients stay with us because we treat their business like our own.
+          </p>
+          <p>
+            We are a small, focused team. That is deliberate. It means the person who scopes your project is the same person who writes your code and answers your messages — no account managers, no handoffs, no information lost in transit.
+          </p>
+          <p>
+            Based in Taliparamba, Kerala — available worldwide.
+          </p>
+        </div>
+      </div>
+
+      <!-- Map / visual -->
+      <div class="bg-brand-50 rounded-3xl p-8 flex flex-col gap-6">
+        <div>
+          <p class="text-xs text-teal-600 font-semibold uppercase tracking-widest mb-3">Clients across</p>
+          <div class="flex flex-wrap gap-2">
+            {countries.map(c => (
+              <span class="bg-white border border-brand-100 text-brand-800 text-sm px-3 py-1.5 rounded-full font-medium">
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div class="border-t border-brand-100 pt-6">
+          <p class="text-xs text-teal-600 font-semibold uppercase tracking-widest mb-3">Headquartered in</p>
+          <div class="flex items-start gap-3">
+            <div class="mt-0.5 w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center shrink-0">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-brand-900">Taliparamba, Kerala</p>
+              <p class="text-sm text-gray-500">India — UTC+5:30</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="bg-gray-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-3">How we work</h2>
+        <p class="text-gray-500 text-lg">The principles we hold to on every project</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {values.map(v => (
+          <div class="bg-white rounded-2xl p-8 border border-gray-100">
+            <div class="w-2 h-2 rounded-full bg-teal-600 mb-4"></div>
+            <h3 class="font-bold text-brand-900 text-xl mb-3">{v.title}</h3>
+            <p class="text-gray-500 leading-relaxed">{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="max-w-6xl mx-auto px-6 py-20">
+    <div class="grid md:grid-cols-2 gap-14 items-center">
+      <!-- Avatar placeholder -->
+      <div class="flex justify-center md:justify-start">
+        <div class="w-52 h-52 rounded-3xl bg-gradient-to-br from-brand-100 to-brand-200 flex items-center justify-center">
+          <span class="text-7xl font-black text-brand-400">J</span>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs text-teal-600 font-semibold uppercase tracking-widest mb-3">Founder & Lead Developer</p>
+        <h2 class="text-3xl font-bold text-brand-900 mb-4">Jeevan</h2>
+        <div class="space-y-3 text-gray-600 leading-relaxed">
+          <p>
+            I have spent over a decade building e-commerce solutions on PrestaShop. What started as freelance module development grew into a full service agency as clients kept returning — and referring others.
+          </p>
+          <p>
+            I handle every project personally: architecture, development, and support. You always know who is working on your store.
+          </p>
+        </div>
+        <div class="mt-6 flex gap-4">
+          <a href="/contact"
+             class="bg-brand-600 hover:bg-brand-800 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm">
+            Work with me
+          </a>
+          <a href="/portfolio"
+             class="border border-brand-200 hover:bg-brand-50 text-brand-700 font-semibold px-6 py-3 rounded-xl transition-colors text-sm">
+            See the work
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section class="bg-brand-50 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-xs text-teal-600 font-semibold uppercase tracking-widest text-center mb-8">Technologies we work with</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {tech.map(t => (
+          <span class="bg-white border border-brand-100 text-brand-800 text-sm font-medium px-4 py-2 rounded-full">
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-brand-900 text-white py-20 text-center">
+    <div class="max-w-xl mx-auto px-6">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to work together?</h2>
+      <p class="text-brand-100 mb-8 text-lg">Tell us about your project — we'll respond within 24 hours.</p>
+      <a href="/contact"
+         class="inline-block bg-teal-600 hover:bg-teal-800 text-white font-bold px-10 py-4 rounded-xl transition-colors">
+        Get in touch
+      </a>
+    </div>
+  </section>
+
+</Base>
