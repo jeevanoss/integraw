@@ -86,10 +86,18 @@ const latestPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
           {portfolio.map(p => (
             <a href={`/portfolio/${p.slug}`}
                class="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-all">
-              <div class="h-44 bg-brand-50 flex items-center justify-center">
-                <span class="text-5xl font-bold text-brand-200 group-hover:text-brand-400 transition-colors">
-                  {p.data.title.charAt(0)}
-                </span>
+              <div class="h-44 bg-brand-50 flex items-center justify-center overflow-hidden">
+                {p.data.image ? (
+                  <img
+                    src={p.data.image}
+                    alt={p.data.title}
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <span class="text-5xl font-bold text-brand-200 group-hover:text-brand-400 transition-colors">
+                    {p.data.title.charAt(0)}
+                  </span>
+                )}
               </div>
               <div class="p-6">
                 <p class="text-xs text-teal-600 font-semibold uppercase tracking-wide mb-1">{p.data.client}</p>
