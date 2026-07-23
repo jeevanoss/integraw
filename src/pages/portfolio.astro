@@ -19,9 +19,9 @@ const allTech = [...new Set(sorted.flatMap(p => p.data.tech))].sort();
   <section class="max-w-6xl mx-auto px-6 pb-12">
     <div class="grid grid-cols-3 gap-4 max-w-lg">
       {[
-        { value: '30+', label: 'Projects delivered' },
-        { value: '15+', label: 'Happy clients' },
-        { value: '5★',  label: 'Avg client rating' },
+        { value: '500+', label: 'Projects delivered' },
+        { value: '220+', label: 'Happy clients' },
+        { value: '5★',   label: 'Avg client rating' },
       ].map(s => (
         <div class="bg-brand-50 rounded-xl p-4 text-center">
           <div class="text-2xl font-bold text-brand-600">{s.value}</div>
@@ -42,10 +42,18 @@ const allTech = [...new Set(sorted.flatMap(p => p.data.tech))].sort();
         {sorted.map(project => (
           <a href={`/portfolio/${project.slug}`}
              class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200">
-            <div class="h-48 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center relative">
-              <span class="text-6xl font-black text-brand-200 group-hover:text-brand-400 transition-colors">
-                {project.data.title.charAt(0)}
-              </span>
+            <div class="h-48 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center relative overflow-hidden">
+              {project.data.image ? (
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <span class="text-6xl font-black text-brand-200 group-hover:text-brand-400 transition-colors">
+                  {project.data.title.charAt(0)}
+                </span>
+              )}
               {project.data.featured && (
                 <span class="absolute top-3 right-3 bg-teal-600 text-white text-xs px-2.5 py-1 rounded-full font-medium">
                   Featured
